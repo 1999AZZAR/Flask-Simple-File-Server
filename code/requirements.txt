@@ -1,3 +1,4 @@
 Flask
 datetime
 shutil
+python-magic

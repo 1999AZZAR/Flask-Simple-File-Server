@@ -9,7 +9,9 @@ xml_upload_url = f'{server_url}/upload/xml'
 
 # Example image data
 image_path = 'path/to/your/image.jpg'
-image_upload_url = f'{server_url}/upload/image'
+# here the endpoint just uncomment one of these 1st line for v1 and 2nd line for v2
+# image_upload_url = f'{server_url}/upload/image' 
+# image_upload_url = f'{server_url}/upload' 
 
 # Send XML data to the server
 xml_response = requests.post(xml_upload_url, files={'xml': ('example.xml', xml_data, 'application/xml')})
