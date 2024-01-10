@@ -15,7 +15,7 @@ FSFS is a simple Python Flask application that provides file upload and download
 1. Clone the repository:
 
    ```bash
-   git clone [repository_url]
+   git clone https://github.com/1999AZZAR/Flask-Simple-File-Server.git
    cd flask-simple-file-server
    ```
 
