@@ -40,7 +40,7 @@ Setting up FSFS is a straightforward process. Follow these steps:
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/1999AZZAR/Flask-Simple-File-Server
+    git clone https://github.com/1999AZZAR/Flask-Simple-File-Server.git
     ```
 
 2. **Install Dependencies:**
