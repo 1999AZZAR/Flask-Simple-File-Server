@@ -14,6 +14,7 @@
     - [3. List Files](#3-list-files)
   - [Database Structure](#database-structure)
   - [File Categories](#file-categories)
+  - [Flowchart](#flowchart)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -111,6 +112,63 @@ Files are intelligently categorized into the following folders based on their ex
 - `document_files`: Document files
 - `compressed_files`: Compressed files
 - `null_files`: Files with no recognizable extension
+
+## Flowchart
+
+```mermaid
+graph TD
+  A[Request] -->|POST| B[Check 'file' in request]
+  B -->|No| C[Return 'File is required', 400]
+  B -->|Yes| D[Get user file]
+  D -->|Check filename| E[Invalid filename?]
+  E -->|Yes| F[Return 'Invalid file name', 400]
+  E -->|No| G[Create folders]
+  G --> H[Get file extension]
+  H --> I[Handle no extension]
+  I -->|No| J[Identify file category]
+  J -->|XML| K[XML Folder]
+  J -->|Image| L[Image Folder]
+  J -->|Compressed| M[Compressed Folder]
+  J -->|Video| N[Video Folder]
+  J -->|Audio| O[Audio Folder]
+  J -->|Document| P[Document Folder]
+  J -->|Null| Q[Null Folder]
+  K -->|Save file| R[Insert file record]
+  R --> S[Debug message]
+  S -->|Success| T[Return success message]
+  K -->|Return success| T[Return success message]
+  L -->|Save file| U[Insert file record]
+  U --> V[Debug message]
+  V -->|Success| W[Return success message]
+  L -->|Return success| W[Return success message]
+  M -->|Save file| X[Insert file record]
+  X --> Y[Debug message]
+  Y -->|Success| Z[Return success message]
+  M -->|Return success| Z[Return success message]
+  N -->|Save file| AA[Insert file record]
+  AA --> AB[Debug message]
+  AB -->|Success| AC[Return success message]
+  N -->|Return success| AC[Return success message]
+  O -->|Save file| AD[Insert file record]
+  AD --> AE[Debug message]
+  AE -->|Success| AF[Return success message]
+  O -->|Return success| AF[Return success message]
+  P -->|Save file| AG[Insert file record]
+  AG --> AH[Debug message]
+  AH -->|Success| AI[Return success message]
+  P -->|Return success| AI[Return success message]
+  Q -->|Save file| AJ[Insert file record]
+  AJ --> AK[Debug message]
+  AK -->|Success| AL[Return success message]
+  Q -->|Return success| AL[Return success message]
+  T --> BM[Response]
+  W --> BM[Response]
+  Z --> BM[Response]
+  AC --> BM[Response]
+  AF --> BM[Response]
+  AI --> BM[Response]
+  AL --> BM[Response]
+```
 
 ## Contributing
 
