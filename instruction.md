@@ -101,9 +101,7 @@
 - **List Uploaded Files:**
   - Access the list of uploaded files through `http://127.0.0.1:2500/list`.
 
-Make sure to replace `<repository_url>` and `<repository_folder>` with the actual URL and folder name, respectively. Additionally, adapt the URLs if you run the application on a different machine or port.
-
-Remember to deactivate the virtual environment when you're done:
+NB: Remember to deactivate the virtual environment when you're done:
 
 ```bash
 # On Windows:
