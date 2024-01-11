@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background-color: #394240;
+    color: #dbe6e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: margin-left 0.5s;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    margin: 5vh;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.upload-box {
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #2d3538;
+    box-shadow: 8px 8px 10px 2px #393a3b, -8px -3px 20px 2px rgb(0, 0, 0);
+    text-align: center;
+}
+
+.file-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #dbe6e3;
+}
+
+.file-input-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.file-input {
+    font-size: 16px;
+    color: #555;
+    padding: 10px;
+    width: 0;
+    box-sizing: border-box;
+    display: none;
+}
+
+.file-btn {
+    padding: 10px 15px;
+    background-color: #4e4e4e;
+    color: #dbe6e3;
+    cursor: pointer;
+}
+
+.file-btn:hover {
+    background-color: #616161;
+}
+
+.selected-file-name {
+    margin-block-start: auto;
+    color: #dbe6e3;
+    font-size: 14px;
+}
+
+.upload-btn {
+    background-color: #4e4e4e;
+    color: #dbe6e3;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+}
+
+.upload-btn:hover {
+    background-color: #616161;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imageBoxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-box {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 2px solid #7d8a8b;
+    box-sizing: border-box;
+    box-shadow: 8px 8px 10px 2px #393a3b, -8px -3px 20px 2px rgb(0, 0, 0);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.image-box:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+    outline: 1px solid #7d8a8b;
+    background-color: #454f4d;
+    z-index: 10;
+}
+
+.file-name {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    color: #dbe6e3;
+    font-size: 14px;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}

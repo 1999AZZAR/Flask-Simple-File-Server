@@ -12,6 +12,7 @@
     - [1. Upload File](#1-upload-file)
     - [2. Download File](#2-download-file)
     - [3. List Files](#3-list-files)
+    - [4. Web-ui example](#4-web-ui-example)
   - [Database Structure](#database-structure)
   - [File Categories](#file-categories)
   - [Flowchart](#flowchart)
@@ -73,7 +74,7 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 **Parameters:**
 
 - `file`: The file to be uploaded
-- [example](code/file_upload.py)
+- [example](code/example/api-call/file_upload.py)
 
 ### 2. Download File
 
@@ -82,7 +83,7 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 **Parameters:**
 
 - `filename`: The name of the file to be downloaded
-- [example](code/file_download.py)
+- [example](code/example/api-call/file_download.py)
 
 ### 3. List Files
 
@@ -90,7 +91,11 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 **Method:** `GET`  
 **Returns:** JSON array containing details of all uploaded files
 
-- [example](code/file_list.py)
+- [example](code/example/api-call/file_list.py)
+
+### 4. Web-ui example
+
+- [example](code/example/web-ui/)
 
 ## Database Structure
 
