@@ -45,6 +45,7 @@ Setting up FSFS is a straightforward process. Follow these steps:
 
     ```bash
     git clone https://github.com/1999AZZAR/Flask-Simple-File-Server.git
+    cd Flask-Simple-File-Server
     ```
 
 2. **Install Dependencies:**
@@ -56,10 +57,12 @@ Setting up FSFS is a straightforward process. Follow these steps:
 3. **Run the Application:**
 
     ```bash
+    cd code
     python the_server.py
     ```
 
     Access the server at [http://localhost:2500](http://localhost:2500).
+    and [here](instruction.md) the more detailed instruction
 
 ## Usage
 
