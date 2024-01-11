@@ -34,6 +34,8 @@ Flask Simple File Server (FSFS) is a robust and user-friendly web application de
 
 5. **SQLite Database Integration:** FSFS utilizes an SQLite database (`files.db`) to store and manage file metadata. The database ensures data persistence and enables efficient retrieval of file information.
 
+6. **General Folder:** FSFS now includes a "GENERAL_FOLDER" for files with extensions not covered by existing categories.
+
 ## Installation
 
 Setting up FSFS is a straightforward process. Follow these steps:
@@ -80,7 +82,7 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 **Parameters:**
 
 - `filename`: The name of the file to be downloaded
-- [exapmle](code/file_download.py)
+- [example](code/file_download.py)
 
 ### 3. List Files
 
@@ -112,6 +114,7 @@ Files are intelligently categorized into the following folders based on their ex
 - `document_files`: Document files
 - `compressed_files`: Compressed files
 - `null_files`: Files with no recognizable extension
+- `general_files`: Files with unknown extensions
 
 ## Flowchart
 
@@ -132,42 +135,48 @@ graph TD
   J -->|Video| N[Video Folder]
   J -->|Audio| O[Audio Folder]
   J -->|Document| P[Document Folder]
-  J -->|Null| Q[Null Folder]
-  K -->|Save file| R[Insert file record]
-  R --> S[Debug message]
-  S -->|Success| T[Return success message]
-  K -->|Return success| T[Return success message]
-  L -->|Save file| U[Insert file record]
-  U --> V[Debug message]
-  V -->|Success| W[Return success message]
-  L -->|Return success| W[Return success message]
-  M -->|Save file| X[Insert file record]
-  X --> Y[Debug message]
-  Y -->|Success| Z[Return success message]
-  M -->|Return success| Z[Return success message]
-  N -->|Save file| AA[Insert file record]
-  AA --> AB[Debug message]
-  AB -->|Success| AC[Return success message]
-  N -->|Return success| AC[Return success message]
-  O -->|Save file| AD[Insert file record]
-  AD --> AE[Debug message]
-  AE -->|Success| AF[Return success message]
-  O -->|Return success| AF[Return success message]
-  P -->|Save file| AG[Insert file record]
-  AG --> AH[Debug message]
-  AH -->|Success| AI[Return success message]
-  P -->|Return success| AI[Return success message]
-  Q -->|Save file| AJ[Insert file record]
-  AJ --> AK[Debug message]
-  AK -->|Success| AL[Return success message]
-  Q -->|Return success| AL[Return success message]
-  T --> BM[Response]
-  W --> BM[Response]
-  Z --> BM[Response]
-  AC --> BM[Response]
-  AF --> BM[Response]
-  AI --> BM[Response]
-  AL --> BM[Response]
+  J -->|General| Q[General Folder]
+  J -->|Null| R[Null Folder]
+  K -->|Save file| S[Insert file record]
+  S --> T[Debug message]
+  T -->|Success| U[Return success message]
+  K -->|Return success| U[Return success message]
+  L -->|Save file| V[Insert file record]
+  V --> W[Debug message]
+  W -->|Success| X[Return success message]
+  L -->|Return success| X[Return success message]
+  M -->|Save file| Y[Insert file record]
+  Y --> Z[Debug message]
+  Z -->|Success| AA[Return success message]
+  M -->|Return success| AA[Return success message]
+  N -->|Save file| AB[Insert file record]
+  AB --> AC[Debug message]
+  AC -->|Success| AD[Return success message]
+  N -->|Return success| AD[Return success message]
+  O -->|Save file| AE[Insert file record]
+  AE --> AF[Debug message]
+  AF -->|Success| AG[Return success message]
+  O -->|Return success| AG[Return success message]
+  P -->|Save file| AH[Insert file record]
+  AH --> AI[Debug message]
+  AI -->|Success| AJ[Return success message]
+  P -->|Return success| AJ[Return success message]
+  Q -->|Save file| AK[Insert file record]
+  AK --> AL[Debug message]
+  AL -->|Success| AM[Return success message]
+  Q -->|Return success| AM[Return success message]
+  R -->|Save file| AN[Insert file record]
+  AN --> AO[Debug message]
+  AO -->|Success| AP[Return success message]
+  R -->|Return success| AP[Return success message]
+  U --> BM[Response]
+  X --> BM[Response]
+  AA --> BM[Response]
+  AD --> BM[Response]
+  AG --> BM[Response]
+  AJ --> BM[Response]
+  AM --> BM[Response]
+  AP --> BM[Response]
 ```
 
 ## Contributing
