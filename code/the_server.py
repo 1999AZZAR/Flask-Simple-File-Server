@@ -8,7 +8,7 @@ import logging
 app = Flask(__name__)
 CORS(app)
 
-BASE_FOLDER = '/media/azzar/betha/Downloads/project/quick_count/databased/'
+BASE_FOLDER = '/path/to/where/you/want/to/save/the/data/'
 OTHER_FOLDER = 'other_files'
 XML_FOLDER = 'xml_files'
 IMG_FOLDER = 'img_files'
