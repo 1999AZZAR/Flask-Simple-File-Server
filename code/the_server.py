@@ -3,6 +3,7 @@ from flask_cors import CORS
 import os
 from datetime import datetime
 import sqlite3
+import logging
 
 app = Flask(__name__)
 CORS(app)
@@ -18,6 +19,11 @@ COMPRESSED_FOLDER = 'compressed_files'
 NULL_FOLDER = 'null_files'
 GENERAL_FOLDER = 'general_files'
 DATABASE = 'files.db'
+
+# Configure logging
+log_format = "%(asctime)s - %(levelname)s - %(message)s"
+log_file_path = os.path.join(BASE_FOLDER, 'app.log')
+logging.basicConfig(filename=log_file_path, level=logging.DEBUG, format=log_format)
 
 app.config['OTHER_FOLDER'] = os.path.join(BASE_FOLDER, OTHER_FOLDER)
 app.config['XML_FOLDER'] = os.path.join(BASE_FOLDER, XML_FOLDER)
@@ -62,7 +68,7 @@ def insert_file_record(filename, extension, category):
 
 def debug_message(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[{timestamp}] {message}")
+    logging.debug(f"[{timestamp}] {message}")
 
 def save_file(file, folder, filename):
     file_path = os.path.join(folder, filename)
