@@ -1,6 +1,4 @@
 Flask
 datetime
-shutil
 python-magic
-sqlite3
 flask_cors
