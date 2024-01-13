@@ -9,7 +9,6 @@ app = Flask(__name__)
 CORS(app)
 
 BASE_FOLDER = '/path/to/where/you/want/to/save/the/data/'
-OTHER_FOLDER = 'other_files'
 XML_FOLDER = 'xml_files'
 IMG_FOLDER = 'img_files'
 VIDEO_FOLDER = 'video_files'
@@ -25,7 +24,6 @@ log_format = "%(asctime)s - %(levelname)s - %(message)s"
 log_file_path = os.path.join(BASE_FOLDER, 'app.log')
 logging.basicConfig(filename=log_file_path, level=logging.DEBUG, format=log_format)
 
-app.config['OTHER_FOLDER'] = os.path.join(BASE_FOLDER, OTHER_FOLDER)
 app.config['XML_FOLDER'] = os.path.join(BASE_FOLDER, XML_FOLDER)
 app.config['IMG_FOLDER'] = os.path.join(BASE_FOLDER, IMG_FOLDER)
 app.config['VIDEO_FOLDER'] = os.path.join(BASE_FOLDER, VIDEO_FOLDER)
@@ -91,7 +89,6 @@ def save_file(file, folder, filename):
 
 def create_folders():
     folders = [
-        app.config['OTHER_FOLDER'],
         app.config['XML_FOLDER'],
         app.config['IMG_FOLDER'],
         app.config['VIDEO_FOLDER'],
@@ -120,7 +117,7 @@ def get_category_folder(category):
         'General': app.config['GENERAL_FOLDER'],
     }
 
-    return folder_mapping.get(category, app.config['OTHER_FOLDER'])
+    return folder_mapping.get(category)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
