@@ -95,7 +95,7 @@
   - Include the file in the request with the key `file`.
 
 - **Download a File:**
-  - Access a file using the endpoint `http://127.0.0.1:2500/download/<filename>`.
+  - Access a file using the endpoint `http://127.0.0.1:2500/download?filename=<filename>`.
   - Replace `<filename>` with the actual filename you want to download.
 
 - **List Uploaded Files:**
