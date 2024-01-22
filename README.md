@@ -38,6 +38,8 @@ Flask Simple File Server (FSFS) is a robust and user-friendly web application de
 
 6. **General Folder:** FSFS now includes a "GENERAL_FOLDER" for files with extensions not covered by existing categories.
 
+7. **Enhanced Download Endpoints:** Added new download endpoints for better user experience, supporting specific files, file formats, extensions, and bulk downloads.
+
 ## Installation
 
 Setting up FSFS is a straightforward process. Follow these steps:
@@ -62,8 +64,7 @@ Setting up FSFS is a straightforward process. Follow these steps:
     python the_server.py
     ```
 
-    Access the server at [http://localhost:2500](http://localhost:2500).
-    and [here](instruction.md) the more detailed instruction
+    Access the server at [http://localhost:2500](http://localhost:2500) and [here](instruction.md) for more detailed instructions.
 
 ## Usage
 
@@ -82,12 +83,15 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 
 ### 2. Download File
 
-**Endpoint:** `/download/<filename>`  
+**Endpoint:** `/download`  
 **Method:** `GET`  
 **Parameters:**
 
 - `filename`: The name of the file to be downloaded
-- [example](code/example/api-call/file_download.py)
+- `fileformat`: The file format for bulk download
+- `extension`: The file extension for bulk download
+- `all`: Download all files
+- example `/download?fileformat=Image` 
 
 ### 3. List Files
 
