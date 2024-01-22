@@ -12,8 +12,7 @@
     - [1. Upload File](#1-upload-file)
     - [2. Download File](#2-download-file)
     - [3. List Files](#3-list-files)
-    - [4. Web-ui example](#4-web-ui-example)
-    - [5. List Files with Specific File Format or Extension](#5-list-files-with-specific-file-format-or-extension)
+    - [4. List Files with Specific File Format or Extension](#5-list-files-with-specific-file-format-or-extension)
   - [Database Structure](#database-structure)
   - [File Categories](#file-categories)
   - [Flowchart](#flowchart)
@@ -101,11 +100,7 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 
 - [example](code/example/api-call/file_list.py)
 
-### 4. Web-ui example
-
-- [example](code/example/web-ui/)
-
-### 5. List Files with Specific File Format or Extension
+### 4. List Files with Specific File Format or Extension
 
 - To list files of a specific file format, use `/list?fileformat=<your_file_format>`
 - To list files with a specific extension, use `/list?extension=<your_extension>`
