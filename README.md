@@ -90,7 +90,8 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 - `fileformat`: The file format for bulk download
 - `extension`: The file extension for bulk download
 - `all`: Download all files
-- example `/download?fileformat=Image` 
+- usage example `/download?fileformat=Image` will download all image files.
+- [code example](code/example/api-call/file_download.py)
 
 ### 3. List Files
 
@@ -114,7 +115,6 @@ For example:
 
 FSFS employs an SQLite database (`files.db`) with a table named `files` to store file information. The table structure is as follows:
 
-- `id`: Unique identifier for each file (Primary Key)
 - `filename`: Name of the uploaded file
 - `extension`: File extension
 - `category`: File category (e.g., Image, Video)
