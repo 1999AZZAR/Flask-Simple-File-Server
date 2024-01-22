@@ -5,7 +5,7 @@ base_url = "http://localhost:2500"
 
 # Test the /download endpoint with a specific filename
 download_filename = "filename.extension"
-download_url = f"{base_url}/download/{download_filename}"
+download_url = f"{base_url}/download?filename={download_filename}"
 
 response = requests.get(download_url)
 
