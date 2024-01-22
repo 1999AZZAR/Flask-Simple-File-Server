@@ -3,6 +3,7 @@ from flask_cors import CORS
 import os
 from datetime import datetime
 import sqlite3
+import zipfile
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -194,19 +195,74 @@ def upload_file():
         logging.error(f"Error uploading file: {e}")
         return 'Internal Server Error', 500
 
-@app.route('/download/<filename>', methods=['GET'])
-def download_file(filename):
+@app.route('/download', methods=['GET'])
+def download_file():
     try:
-        file_path = get_file_path(filename)
+        filename = request.args.get('filename')
+        file_format = request.args.get('fileformat')
+        extension = request.args.get('extension')
 
-        if file_path is None:
-            return 'File not found', 404
+        if filename:
+            file_path = get_file_path(filename)
+            if file_path:
+                return send_file(file_path, as_attachment=True)
+            else:
+                return 'File not found', 404
 
-        return send_file(file_path, as_attachment=True)
+        elif file_format:
+            files = get_files_by_format(file_format)
+            return send_file_archive(files)
+
+        elif extension:
+            files = get_files_by_extension(extension)
+            return send_file_archive(files)
+
+        elif request.args.get('all'):
+            files = get_all_files()
+            return send_file_archive(files)
+
+        else:
+            return 'Invalid request', 400
 
     except Exception as e:
         logging.error(f"Error downloading file: {e}")
         return 'Internal Server Error', 500
+
+# Helper functions
+
+def get_files_by_format(file_format):
+    conn = sqlite3.connect(app.config['DATABASE'])
+    cursor = conn.cursor()
+    cursor.execute('SELECT filename FROM files WHERE category = ? ORDER BY upload_time DESC', (file_format,))
+    files = cursor.fetchall()
+    conn.close()
+    return [file[0] for file in files]
+
+def get_files_by_extension(extension):
+    conn = sqlite3.connect(app.config['DATABASE'])
+    cursor = conn.cursor()
+    cursor.execute('SELECT filename FROM files WHERE extension = ? ORDER BY upload_time DESC', (extension,))
+    files = cursor.fetchall()
+    conn.close()
+    return [file[0] for file in files]
+
+def get_all_files():
+    conn = sqlite3.connect(app.config['DATABASE'])
+    cursor = conn.cursor()
+    cursor.execute('SELECT filename FROM files ORDER BY upload_time DESC')
+    files = cursor.fetchall()
+    conn.close()
+    return [file[0] for file in files]
+
+def send_file_archive(files):
+    archive_name = 'files_archive.zip'
+    with open(archive_name, 'wb') as archive:
+        with zipfile.ZipFile(archive, 'w') as zip_file:
+            for file in files:
+                file_path = get_file_path(file)
+                if file_path:
+                    zip_file.write(file_path, os.path.basename(file_path))
+    return send_file(archive_name, as_attachment=True)
 
 @app.route('/list', methods=['GET'])
 def list_files():
