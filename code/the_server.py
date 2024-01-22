@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 import sqlite3
 import logging
+from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 CORS(app)
@@ -22,7 +23,13 @@ DATABASE = 'files.db'
 # Configure logging
 log_format = "%(asctime)s - %(levelname)s - %(message)s"
 log_file_path = os.path.join(BASE_FOLDER, 'app.log')
-logging.basicConfig(filename=log_file_path, level=logging.DEBUG, format=log_format)
+
+# Use RotatingFileHandler to limit log file size
+max_log_size_mb = 2
+handler = RotatingFileHandler(log_file_path, maxBytes=max_log_size_mb * 1024 * 1024, backupCount=3)
+handler.setLevel(logging.DEBUG)
+handler.setFormatter(logging.Formatter(log_format))
+app.logger.addHandler(handler)
 
 app.config['XML_FOLDER'] = os.path.join(BASE_FOLDER, XML_FOLDER)
 app.config['IMG_FOLDER'] = os.path.join(BASE_FOLDER, IMG_FOLDER)
@@ -204,9 +211,19 @@ def download_file(filename):
 @app.route('/list', methods=['GET'])
 def list_files():
     try:
+        file_format = request.args.get('fileformat')
+        extension = request.args.get('extension')
+
         conn = sqlite3.connect(app.config['DATABASE'])
         cursor = conn.cursor()
-        cursor.execute('SELECT id, filename, extension, category, upload_time FROM files ORDER BY upload_time DESC')
+
+        if file_format:
+            cursor.execute('SELECT id, filename, extension, category, upload_time FROM files WHERE category = ? ORDER BY upload_time DESC', (file_format,))
+        elif extension:
+            cursor.execute('SELECT id, filename, extension, category, upload_time FROM files WHERE extension = ? ORDER BY upload_time DESC', (extension,))
+        else:
+            cursor.execute('SELECT id, filename, extension, category, upload_time FROM files ORDER BY upload_time DESC')
+
         files = cursor.fetchall()
         conn.close()
 
