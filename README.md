@@ -13,6 +13,7 @@
     - [2. Download File](#2-download-file)
     - [3. List Files](#3-list-files)
     - [4. Web-ui example](#4-web-ui-example)
+    - [5. List Files with Specific File Format or Extension](#5-list-files-with-specific-file-format-or-extension)
   - [Database Structure](#database-structure)
   - [File Categories](#file-categories)
   - [Flowchart](#flowchart)
@@ -100,6 +101,16 @@ FSFS offers a user-friendly experience for managing files. Users can utilize the
 
 - [example](code/example/web-ui/)
 
+### 5. List Files with Specific File Format or Extension
+
+- To list files of a specific file format, use `/list?fileformat=<your_file_format>`
+- To list files with a specific extension, use `/list?extension=<your_extension>`
+
+For example:
+
+- `/list?fileformat=Image` will list all image files.
+- `/list?extension=.pdf` will list all PDF files.
+
 ## Database Structure
 
 FSFS employs an SQLite database (`files.db`) with a table named `files` to store file information. The table structure is as follows:
@@ -156,7 +167,9 @@ graph TD
   M -->|Save file| Y[Insert file record]
   Y --> Z[Debug message]
   Z -->|Success| AA[Return success message]
-  M -->|Return success| AA[Return success message]
+  M -->|Return
+
+ success| AA[Return success message]
   N -->|Save file| AB[Insert file record]
   AB --> AC[Debug message]
   AC -->|Success| AD[Return success message]
