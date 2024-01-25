@@ -49,7 +49,6 @@ def initialize_database():
             cursor = conn.cursor()
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS files (
-                    id TEXT PRIMARY KEY,
                     filename TEXT,
                     extension TEXT,
                     category TEXT,
