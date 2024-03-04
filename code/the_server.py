@@ -10,7 +10,7 @@ from logging.handlers import RotatingFileHandler
 app = Flask(__name__)
 CORS(app)
 
-BASE_FOLDER = '/path/to/where/you/want/to/save/the/data/'
+BASE_FOLDER = 'code/data/'
 XML_FOLDER = 'xml_files'
 IMG_FOLDER = 'img_files'
 VIDEO_FOLDER = 'video_files'

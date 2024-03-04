@@ -7,7 +7,7 @@
    - Run the following commands:
 
      ```bash
-     git clone git clone https://github.com/1999AZZAR/Flask-Simple-File-Server.git
+     git clone https://github.com/1999AZZAR/Flask-Simple-File-Server.git
      cd Flask-Simple-File-Server
      ```
 
@@ -21,20 +21,20 @@
    - Create a virtual environment in the project folder:
 
      ```bash
-     virtualenv venv
+     python -m venv myvenv
      ```
 
    - Activate the virtual environment:
      - On Windows:
 
        ```bash
-       .\venv\Scripts\activate
+       .\myvenv\Scripts\activate
        ```
 
      - On Unix or MacOS:
 
        ```bash
-       source venv/bin/activate
+       source myvenv/bin/activate
        ```
 
 3. **Install Dependencies:**
@@ -48,8 +48,7 @@
    - Run the Flask application to initialize the database and create necessary folders:
 
      ```bash
-     cd code
-     python the_server.py
+     python code/the_server.py
      ```
 
      This step creates the `files.db` database and the required folders for file storage.
@@ -70,13 +69,13 @@
      - On Windows:
 
        ```bash
-       .\venv\Scripts\activate
+       .\myvenv\Scripts\activate
        ```
 
      - On Unix or MacOS:
 
        ```bash
-       source venv/bin/activate
+       source myvenv/bin/activate
        ```
 
 2. **Run the Application:**
