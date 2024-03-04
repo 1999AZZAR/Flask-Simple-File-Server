@@ -12,7 +12,7 @@
     - [1. Upload File](#1-upload-file)
     - [2. Download File](#2-download-file)
     - [3. List Files](#3-list-files)
-    - [4. List Files with Specific File Format or Extension](#5-list-files-with-specific-file-format-or-extension)
+    - [4. List Files with Specific File Format or Extension](#4-list-files-with-specific-file-format-or-extension)
   - [Database Structure](#database-structure)
   - [File Categories](#file-categories)
   - [Flowchart](#flowchart)
@@ -21,7 +21,7 @@
 
 ## Introduction
 
-Flask Simple File Server (FSFS) is a robust and user-friendly web application developed with Flask. Its primary purpose is to facilitate seamless file management, offering features like file upload, download, and categorization. Built on top of Flask, FSFS ensures a lightweight and efficient solution for organizing and accessing files.
+Flask Simple File Server (FSFS) is a robust and user(admin)-friendly data application developed with Flask. Its primary purpose is to facilitate seamless file management, offering features like file upload, download, and categorization. Built on top of Flask, FSFS ensures a lightweight and efficient solution for organizing and accessing files.
 
 ## Features
 
