@@ -13,6 +13,7 @@
     - [2. Download File](#2-download-file)
     - [3. List Files](#3-list-files)
     - [4. List Files with Specific File Format or Extension](#4-list-files-with-specific-file-format-or-extension)
+    - [5. Delete File](#5-delete-file)
   - [Database Structure](#database-structure)
   - [File Categories](#file-categories)
   - [Flowchart](#flowchart)
@@ -110,6 +111,16 @@ For example:
 
 - `/list?fileformat=Image` will list all image files.
 - `/list?extension=.pdf` will list all PDF files.
+
+### 5. Delete File
+
+**Endpoint:** `/delete/<filename>`  
+**Method:** `DELETE`  
+**Parameters:**
+
+- `filename`: The name of the file to be deleted
+
+Usage example: `/delete/myfile.txt` will delete the file named "myfile.txt".
 
 ## Database Structure
 

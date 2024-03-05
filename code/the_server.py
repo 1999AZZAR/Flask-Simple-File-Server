@@ -227,8 +227,6 @@ def download_file():
         logging.error(f"Error downloading file: {e}")
         return 'Internal Server Error', 500
 
-# Helper functions
-
 def get_files_by_format(file_format):
     conn = sqlite3.connect(app.config['DATABASE'])
     cursor = conn.cursor()
@@ -288,6 +286,31 @@ def list_files():
 
     except Exception as e:
         logging.error(f"Error listing files: {e}")
+        return 'Internal Server Error', 500
+
+@app.route('/delete/<filename>', methods=['DELETE'])
+def delete_file(filename):
+    try:
+        file_path = get_file_path(filename)
+
+        if not file_path:
+            return 'File not found', 404
+
+        # Remove the file from the database
+        conn = sqlite3.connect(app.config['DATABASE'], check_same_thread=False)
+        with conn:
+            cursor = conn.cursor()
+            cursor.execute('DELETE FROM files WHERE filename = ?', (filename,))
+        conn.commit()
+        conn.close()
+
+        os.remove(file_path)
+
+        debug_message(f'File deleted successfully: {filename}')
+        return f'File deleted successfully: {filename}'
+
+    except Exception as e:
+        logging.error(f"Error deleting file: {e}")
         return 'Internal Server Error', 500
 
 def get_file_path(filename):
