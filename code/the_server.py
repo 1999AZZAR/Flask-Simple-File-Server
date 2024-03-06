@@ -10,7 +10,7 @@ from logging.handlers import RotatingFileHandler
 app = Flask(__name__)
 CORS(app)
 
-BASE_FOLDER = 'code/data/'
+BASE_FOLDER = 'code/data'
 XML_FOLDER = 'xml_files'
 IMG_FOLDER = 'img_files'
 VIDEO_FOLDER = 'video_files'
@@ -49,6 +49,7 @@ def initialize_database():
             cursor = conn.cursor()
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS files (
+                    id TEXT PRIMARY KEY,
                     filename TEXT,
                     extension TEXT,
                     category TEXT,
@@ -227,6 +228,8 @@ def download_file():
         logging.error(f"Error downloading file: {e}")
         return 'Internal Server Error', 500
 
+# Helper functions
+
 def get_files_by_format(file_format):
     conn = sqlite3.connect(app.config['DATABASE'])
     cursor = conn.cursor()
@@ -296,7 +299,6 @@ def delete_file(filename):
         if not file_path:
             return 'File not found', 404
 
-        # Remove the file from the database
         conn = sqlite3.connect(app.config['DATABASE'], check_same_thread=False)
         with conn:
             cursor = conn.cursor()

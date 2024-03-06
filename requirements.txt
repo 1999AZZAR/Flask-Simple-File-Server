@@ -2,3 +2,4 @@ Flask
 datetime
 python-magic
 flask_cors
+requests
